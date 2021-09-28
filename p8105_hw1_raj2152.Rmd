@@ -17,8 +17,8 @@ First, create a data frame and show resulting output table.
 set.seed(1)
 
 df = tibble(
-  rand_samp = rnorm(10),
-  logical_vec = rand_samp > 0,
+  rand_sample = rnorm(10),
+  logical_vec = rand_sample > 0,
   char_vec = vector("character", 10),
   factor_vec = factor(x = character(10),3)
 )
@@ -26,6 +26,20 @@ df = tibble(
 df
 ```
 
+Try to take the mean of each variable in the data frame, after pulling each one:
+```{r, eval = FALSE, echo = TRUE}
+pull(df,rand_sample)
+mean(rand_sample)
+pull(df,logical_vec)
+mean(logical_vec)
+pull(df,char_vec)
+mean(char_vec)
+pull(df,factor_vec)
+mean(factor_vec)
+```
+
+
+I could only get the mean for rand_sample (mean=-0.22), but not the logical, character, or factor variables.
 
 
 
