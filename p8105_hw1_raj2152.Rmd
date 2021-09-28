@@ -11,7 +11,7 @@ library(tidyverse)
 
 ## Problem 1
 
-First, create a data frame. 
+First, create a data frame and show resulting output table.
 
 ```{r}
 set.seed(1)
@@ -22,6 +22,8 @@ df = tibble(
   char_vec = vector("character", 10),
   factor_vec = factor(x = character(10),3)
 )
+
+df
 ```
 
 
