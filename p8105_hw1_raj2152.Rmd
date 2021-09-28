@@ -36,8 +36,15 @@ mean(pull(df,factor_vec))
 
 I could only get the mean for rand_sample and the logical_vec variables. The character and factor variables returned 'NA' and gave a warning that the argument is not numeric or logical. 
 
+Attempt to convert variable types to numeric.
 
+```{r, eval = FALSE}
+as.numeric(pull(df,logical_vec))
+as.numeric(pull(df,char_vec))
+as.numeric(pull(df,factor_vec))
+```
 
+The logical variable converts to numeric boolean values (1 if True, 0 if false) and the character and factor variables convert to 'NA' values. This explains why we're able to get a mean for logical but not character and factor variables.
 
 ## Problem 2
 
