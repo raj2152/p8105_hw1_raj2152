@@ -24,6 +24,11 @@ df = tibble(
 )
 ```
 
+
+
+
+
+
 ## Problem 2
 
 
