@@ -1,0 +1,29 @@
+---
+title: "p8105_hw1_raj2152"
+author: "Rachelle Juan"
+date: "9/26/2021"
+output: github_document
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(tidyverse)
+```
+
+## Problem 1
+
+First, create a data frame. 
+
+```{r}
+set.seed(1)
+
+df = tibble(
+  rand_samp = rnorm(10),
+  logical_vec = rand_samp > 0,
+  char_vec = vector("character", 10),
+  factor_vec = factor(x = character(10),3)
+)
+```
+
+## Problem 2
+
+
