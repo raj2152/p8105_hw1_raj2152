@@ -48,4 +48,14 @@ The logical variable converts to numeric boolean values (1 if True, 0 if false) 
 
 ## Problem 2
 
+Load the penguins dataset and get important information, such as variable names, size of data set, and mean flipper length:
+```{r}
+data("penguins", package = "palmerpenguins")
+
+names(penguins)
+nrow(penguins)
+ncol(penguins)
+skimr::skim(penguins)
+```
+
 
