@@ -36,6 +36,7 @@ mean(pull(df,factor_vec))
 
 I could only get the mean for rand_sample and the logical_vec variables. The character and factor variables returned 'NA' and gave a warning that the argument is not numeric or logical. 
 
+
 Attempt to convert variable types to numeric.
 
 ```{r, eval = FALSE}
@@ -45,6 +46,7 @@ as.numeric(pull(df,factor_vec))
 ```
 
 The logical variable converts to numeric boolean values (1 if True, 0 if false) and the character and factor variables convert to 'NA' values. This explains why we're able to get a mean for logical but not character and factor variables.
+
 
 ## Problem 2
 
@@ -58,4 +60,14 @@ ncol(penguins)
 skimr::skim(penguins)
 ```
 
+From the above, we found that there are 8 variables (and thus 8 columns) and 344 rows. The mean flipper length is 201 mm. 
+
+
+
+Now, we'll make a scatterplot of flipper length (y) by bill length (x). 
+```{r, message = FALSE, warning = FALSE}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+ggsave("scatterplot.pdf", height = 4, width = 6)
+```
 
