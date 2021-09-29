@@ -19,8 +19,8 @@ set.seed(1)
 df = tibble(
   rand_sample = rnorm(10),
   logical_vec = rand_sample > 0,
-  char_vec = vector("character", 10),
-  factor_vec = factor(x = character(10),3)
+  char_vec = c("This","is","homework","1","for","Data","Science","with","Jeff","Goldsmith"),
+  factor_vec = factor(c("male","female","other","other","female","other","female","male","male","female"))
 )
 
 df
@@ -45,25 +45,39 @@ as.numeric(pull(df,char_vec))
 as.numeric(pull(df,factor_vec))
 ```
 
-The logical variable converts to numeric boolean values (1 if True, 0 if false) and the character and factor variables convert to 'NA' values. This explains why we're able to get a mean for logical but not character and factor variables.
+The logical variable converts to numeric boolean values (1 if True, 0 if false). The character variable converted the values to 'NA' and gave the warning that 'NAs introduced by coercion'. The factor variable converted each value level to a numeric value. This explains why we're able to get a mean for logical but not character and factor variables. However, now that the factor variable has numeric values we are able to take the mean.
 
 
 ## Problem 2
 
-Load the penguins dataset and get important information, such as variable names, size of data set, and mean flipper length:
+Load the penguins dataset. 
 ```{r}
 data("penguins", package = "palmerpenguins")
-
-names(penguins)
-nrow(penguins)
-ncol(penguins)
-skimr::skim(penguins)
 ```
 
-From the above, we found that there are 8 variables (and thus 8 columns) and 344 rows. The mean flipper length is 201 mm. 
+The names of all the variables in the penguins dataset include:
+```{r}
+names(penguins)
+```
 
+We see that there are 8 variables in the dataset (hence, 8 columns) with specific measurements for penguins -- including, species, island, bill and flipper measurements, and sex of each penguin. It seems that each row is an observation of an individual penguin. We can also examine some of the values of these variables:
+```{r}
+head(penguins, 5)
+```
 
+```{r}
+nrow(penguins)
+ncol(penguins)
+```
+There are 344 rows and 8 columns in the penguin dataset, meaning there are 8 variables of interest and 344 observations of penguins.
 
+We can also find the mean flipper length, in millimeters:
+```{r}
+mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
+```
+The mean flipper length is around 201 mm. 
+
+### Scatterplot
 Now, we'll make a scatterplot of flipper length (y) by bill length (x). 
 ```{r, message = FALSE, warning = FALSE}
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
